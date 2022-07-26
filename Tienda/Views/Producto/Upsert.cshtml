@@ -1,0 +1,91 @@
+﻿
+@model Tienda.Models.Producto
+
+@{
+    var title = "Crear nuevo Producto";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Upsert</h1>
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">@* multipart para las imagenes*@
+    @if (Model.IdProducto !=0)
+    {
+        title = "Editar Producto";
+        <input asp-for="IdProducto" hidden>
+
+
+   }
+   <div class="border p-3">
+       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       <div class="row">
+           <h2 class="text-info">@title</h2>
+       </div>
+       <div class="row">
+           <div class="col-6">
+               <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <label asp-for="NombreProducto" class="form-label">Nombre Producto</label>
+                        <input asp-for="NombreProducto" class="form-control"/>
+                        <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                    </div>
+                    
+                </div>    
+
+                 <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Descripcion" class="form-label">Descripcion</label>
+                        <input asp-for="Descripcion" class="form-control"/>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    
+                  <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Precio" class="form-label">Precio</label>
+                        <input asp-for="Precio" class="form-control"/>
+                        <span asp-validation-for="Precio" class="text-danger"></span>
+                    </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="ImgUrl" class="form-label">Imagen</label>
+                        <input asp-for="ImgUrl" class="form-control"/>
+                        <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                    </div>
+                </div>  
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="IdCategoria" class="form-label">Categoria</label>
+                        <select asp-for="IdCategoria" asp-items="@ViewBag.categoriaDropDown" class="form-select">
+                            <option disabled selected>--Selecciona la categoria</option>
+                        </select>
+                        <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                    </div>
+                </div>  
+                 <br/>
+                 
+                 
+                 <div class="d-grip gap-2  d-md-block">
+                                @if (Model.IdProducto !=0)
+                                {
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                                    
+                                }else{
+                                    <button type="submit" class="btn btn-primary">Crear Nuevo</button>
+
+                                }
+                                <a asp-controller="Producto" asp-action="Index" class="btn btn-success">Regresar</a>
+                            </div>
+              
+               </div>
+              
+
+           </div>
+
+       </div>
+   </div>
+</form>
+

@@ -1,0 +1,48 @@
+﻿@model Tienda.Models.TipoAplication
+@{
+    ViewData["Title"] = "Create Tipo";
+}
+
+<h1>Create</h1>
+<hr/>
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        @*Validacion*@
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+    <div class="form-group row">
+        <h2 class="text-info pl-3">Nuevo Tipo Aplicacion</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-md-6">
+                <label asp-for="NombreAplicacion" class="form-label">Nombre Aplicacion</label>
+                <input asp-for="NombreAplicacion" class="form-control"/>
+                <span asp-validation-for="NombreAplicacion" class="text-danger"></span>
+            </div>
+
+        </div>
+        <br/>
+    </div>
+    <div class="d-grip gap-2 d-md-block">
+        <button type="submit" class="btn btn-primary">Crear aplicacion </button>
+        <a asp-controller="TipoAplication" asp-action="Index" class="btn btn-success">Regresar</a>
+    </div>
+
+    
+
+</div>
+
+</form>
+
+
+@*//No viaja hasta el servidor*@
+@section Scripts{
+    @{<partial name="_ValidationScriptsPartial"/>}
+}
+
+
+
+

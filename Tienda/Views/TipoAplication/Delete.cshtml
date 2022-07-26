@@ -1,0 +1,36 @@
+﻿@model Tienda.Models.TipoAplication
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Delete</h1>
+<form method="post" asp-action="Delete">
+    <div class="border p-3">
+        @*Validacion*@
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+    <div class="form-group row">
+        <h2 class="text-danger pl-3">Esta seguro de eliminar esta Aplicacion</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <label asp-for="NombreAplicacion" class="form-label">Nombre Aplicacion</label>
+                <input disabled asp-for="NombreAplicacion" class="form-control"/>
+               
+            </div>
+
+        </div>
+
+    </div>
+    <div class="d-grip gap-2 d-md-block">
+        <button type="submit" class="btn btn-danger">Eliminar Aplicacion </button>
+        <a asp-controller="TipoAplication" asp-action="Index" class="btn btn-sucess">Regresar</a>
+    </div>
+
+    
+
+</div>
+
+</form>

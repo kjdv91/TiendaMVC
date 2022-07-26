@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Tienda.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<div class="container p-3 ">
+    <div class="row pt-4">
+        <div class="col-6">
+            
+            <h2 class="text-primary">Lista de Categorias</h2>
+
+        </div>
+@*        Crea nueva categoria
+*@       
+
+    <div class="col-6 text-end">
+            <a asp-controller="Categorias" asp-action="Create" class="btn btn-primary ">
+                <i class="fas fa-plus"></i> Nueva Categoria
+            </a>
+            
+        </div>
+
+    </div>
+
+</div>
+<br />
+
+@if (Model.Count() > 0)//Si hay datos en el modelo me muestra la tabla
+{
+    <table class="table table-bordered table=striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre Categoria</th>
+                <th>Orden</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.NombreCategoria</th>
+                    <th>@item.NumeroOrden</th>
+                    
+                    <th class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Categorias" asp-action="Edit" asp-route-Id="@item.IdCategoria" class="btn btn-primary mx-1">Edit</a> @*Edita el id *@
+                            <a asp-controller="Categorias" asp-action="Delete"  asp-route-Id="@item.IdCategoria" class="btn btn-danger mx-1">Delete</a>
+
+                        </div>
+                    </th>
+                </tr>
+                
+            }
+
+        </tbody>
+
+    </table>
+}
+else
+{
+    <p>No hay registros de Categoria</p>
+}
+@*<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCategoria">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCategoria">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCategoria">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
